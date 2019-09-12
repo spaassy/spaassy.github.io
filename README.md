@@ -36,11 +36,6 @@ spaassy框架内置了react+react-router+axios+spaassy-redux，spaassy-redux基�
 
 首先我们来看看整个spaassy应用的项目目录：
 
-<center>
-<img src="/image/tableOfcontent.jpg" width="50%" height="50%" />
-文件目录
-</center>
-
 #### spaassy作为单纯的SPA应用
 
 如果你目前只是想做一个简单单一应用，Spaassy集成了react、redux、react-redux、axios、antd... 并且在配置上尽可能的做到丰富与封装。尽可能的让适用者专注于业务逻辑的开发，而不是把精力放在环境和各种依赖库的整合上面。
