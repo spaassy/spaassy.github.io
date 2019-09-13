@@ -108,13 +108,13 @@ module.exports = {
 }
 ```
 
-* _spaassyProtalConfig；
+* _spaassyportalConfig；
 
 portalConfig是将当前项目作为一个门户系统打包，需要配置的，它的内部是长这个样子的：
 
 ``` javascript
 const portal = {
-    protalTarget: './dist/index.html',
+    portalTarget: './dist/index.html',
     subProject: [{
         projectName: 'mainSub',
         host: './',
@@ -152,7 +152,7 @@ spaassyRegister.addRouters()
 spaassyRegister.registerReducer()
 ```
 
-当然，如果你只是将spaassy工程为一个独立的SPA项目来使用，_spaassyProtalConfig与_spaassySubConfig这个两个配置文件你完全不用理会和使用。
+当然，如果你只是将spaassy工程为一个独立的SPA项目来使用，_spaassyportalConfig与_spaassySubConfig这个两个配置文件你完全不用理会和使用。
 
 执行：
 
@@ -198,15 +198,15 @@ npm run clearDll
 1、 首先初始化一个工程作为门户系统：
 
 ``` javaScript
-spaassy init - p protal
+spaassy init - p portal
 ```
 
-在_spaassyConfig文件中配置项目名称为protal：
+在_spaassyConfig文件中配置项目名称为portal：
 
 ``` javaScript
 env_variable: {
     'process.env.PROJECTTYPE': JSON.stringify('SPAASSY'), // 系统级别，独立作为spa应用设置为“SPA”, 作为spaassy应用设置为“SPAASSY”
-    'process.env.SYSTEMNAME': JSON.stringify('protal') // 系统名称，会被作为系统的命名空间, 自定义命名
+    'process.env.SYSTEMNAME': JSON.stringify('portal') // 系统名称，会被作为系统的命名空间, 自定义命名
 },
 ```
 
@@ -231,7 +231,7 @@ env_variable: {
 
 两个文件我们直接使用示例代码。
 
-3、 在protal项目中打开，入口文件“src/index.jsx”：
+3、 在portal项目中打开，入口文件“src/index.jsx”：
 
 ``` javaScript
 import React from 'react';
@@ -268,9 +268,9 @@ if (module.hot) {
 }
 ```
 
-在SpaAssyProvider 组件中配置 mainProject 属性，表示当前项目作为一个protal系统。
+在SpaAssyProvider 组件中配置 mainProject 属性，表示当前项目作为一个portal系统。
 
-4、 在subProject 中，配置_spaassySubConfig.js 文件把当前系统要集成到protal系统中的路由和reducer使用spaassy-redux 工具注册进去：
+4、 在subProject 中，配置_spaassySubConfig.js 文件把当前系统要集成到portal系统中的路由和reducer使用spaassy-redux 工具注册进去：
 
 ``` javaScript
 import {
@@ -294,7 +294,7 @@ spaassyRegister.addRouters()
 spaassyRegister.registerReducer()
 ```
 
-5、 在protal项目中通过spaassy-redux 提供的方法 SpaAssyRegister 来获取子项目的router 并注入到portal中.
+5、 在portal项目中通过spaassy-redux 提供的方法 SpaAssyRegister 来获取子项目的router 并注入到portal中.
 
 src/views/home/routers.js:
 
@@ -320,24 +320,24 @@ const routers = [
 
 export default routers
 ```
-为了查看效果，我们先把protal本身的路由注释掉。
+为了查看效果，我们先把portal本身的路由注释掉。
 
 6、 打包subProject项目：
 ``` javaScript
 npm run buildSub
 ```
 
-7、 打包protal项目
+7、 打包portal项目
 ``` javaScript
 npm run build
 ```
 
-8、 我们把子系统distSub包里的文件拷贝一份到protal系统中，把distSub包的子系统资源包subProjec拷贝一份到dist里，并配置protal里的_spaassyProtalConfig：
+8、 我们把子系统distSub包里的文件拷贝一份到portal系统中，把distSub包的子系统资源包subProjec拷贝一份到dist里，并配置portal里的_spaassyportalConfig：
 
 ``` javaScript
 // example
 const portal = {
-    protalTarget: './dist/index.html',
+    portalTarget: './dist/index.html',
     subProject: [{
         projectName: 'subProject',
         host: './',
@@ -355,6 +355,6 @@ module.exports = portal
 npm run portalPublish
 ```
 
-点击运行protal工程里dist文件下的index.html， 子系统的路由已经注入到了protal中。
+点击运行portal工程里dist文件下的index.html， 子系统的路由已经注入到了portal中。
 
 示例代码请参照：https://github.com/spaassy/example.git
